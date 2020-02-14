@@ -27,9 +27,13 @@ def proof_of_work(last_proof):
     #  TODO: Your code here
 
     # check if last six chars of hash(p) = first six chars of hash(p')
+
+    #stringify the block
     last = str(last_proof)
     last_hash = hashlib.sha256(last.encode()).hexdigest()
 
+    # Loop through possibilities, checking each one against `valid_proof`
+    # in an effort to find a number that is a valid proof
     while valid_proof(last_hash, proof) is False:
         proof += 1
     
