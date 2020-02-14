@@ -26,6 +26,20 @@ def proof_of_work(last_proof):
     proof = 0
     #  TODO: Your code here
 
+    # check if last six chars of hash(p) = first six chars of hash(p')
+
+    #stringify the block
+    last = str(last_proof)
+    last_hash = hashlib.sha256(last.encode()).hexdigest()
+
+    # Loop through possibilities, checking each one against `valid_proof`
+    # in an effort to find a number that is a valid proof
+    while valid_proof(last_hash, proof) is False:
+        proof += 1
+    
+    print(last_hash)
+    print( hashlib.sha256(str(proof).encode()).hexdigest() )
+
     print("Proof found: " + str(proof) + " in " + str(timer() - start))
     return proof
 
@@ -40,7 +54,12 @@ def valid_proof(last_hash, proof):
     """
 
     # TODO: Your code here!
-    pass
+    # check if last 6 chars of hash of last proof = first 6 chars of proof
+    string_proof = str(proof)
+    # get the old hash
+    new_hash = hashlib.sha256(string_proof.encode()).hexdigest()
+    # get the hash of the provided proof
+    return last_hash[-6:] == new_hash[:6]
 
 
 if __name__ == '__main__':
