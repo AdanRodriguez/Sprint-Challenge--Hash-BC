@@ -23,12 +23,28 @@ This sprint challenge is divided up into three parts:  Hash tables coding, block
 ## Interview Questions
 
 Explain in detail the workings of a dynamic array:
-* What is the runtime complexity to access an array, add or remove from the front, and add or remove from the back?
+* What is the runtime complexity to access an array, O(1)
+                        add or remove from the front, O(n),
+                        and add or remove from the back? O(1) on average, but if theres no more space, then O(n)
 * What is the worse case scenario if you try to extend the storage size of a dynamic array?
+O(n)
 
-Explain how a blockchain is structured. What are the blocks, what is the chain? How is the data organized?
+* Explain how a blockchain is structured.
+        Index - the number of the block in the chain, starting at 0 or 1, depending on the chain.
+        Timestamp - the time at which the block was created. This is not required, but is often useful.
+        Transactions - the monetary transactions, or any type of data, that is proofed by the block.
+        Proof - the proof for this block.
+        Crytpographic/Previous Hash - the hash of the previous block.
+
+What are the blocks: data being recorded, the link in the chain 
+what is the chain? all blocks linked together with a hash in the next block
+How is the data organized? a series of indexed blocks
  
-Explain how proof of work functions. How does it operate. How does this protect the chain from attack. What kind of attack is possible?
+* Explain how proof of work functions. 
+How does it operate. guess and check
+How does this protect the chain from attack. if you were to change the chain, you would need to change the previously hashed block before someone else finds a new block, which would take a huge amount of time
+What kind of attack is possible? A 51 percent attack, or majority attack, is a case when a user or a group of users control the majority of mining power.
+
 
 ## Project Set Up
 
